@@ -6,8 +6,7 @@ import ListingHead from "@/app/components/Listings/ListingHead";
 import ListingInfo from "@/app/components/Listings/ListingInfo";
 import useLoginModal from "@/app/hooks/useLoginModel";
 import { categories } from "@/app/components/Navbar/Categories";
-import { SafeListing, SafeUser } from "@/app/types";
-import { Reservation } from "@prisma/client";
+import { SafeListing, SafeReservations, SafeUser } from "@/app/types";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -21,7 +20,7 @@ const initialDateRange = {
 
 
 interface ListingClientProps {
-    reservations?: Reservation[];
+    reservations?: SafeReservations;
     listing?: SafeListing & {
         user: SafeUser
     };
@@ -75,7 +74,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 toast.success("Listing reserved!")
                 setDateRange(initialDateRange)
                 //Redirect to /trips
-                router.refresh()
+                router.push('/trips')
             })
             .catch(() => {
                 toast.error("Something went wrong.")
