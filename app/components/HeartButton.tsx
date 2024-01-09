@@ -7,7 +7,7 @@ import useFavorite from "../hooks/useFavorite";
 
 interface HeartButtonProps {
     listingId: string,
-    currentUser?: SafeUser
+    currentUser?: SafeUser | null
 }
 
 const HeartButton: React.FC<HeartButtonProps> = ({

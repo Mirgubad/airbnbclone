@@ -28,7 +28,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" sizes="192x192" href="https://a0.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png"></link>
+        <link rel="icon" sizes="192x192" href="../../../public/Images/bnbLogo.png"></link>
       </head>
       <body className={font.className}>
         <ClientOnly>

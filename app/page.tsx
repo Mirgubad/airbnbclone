@@ -28,7 +28,7 @@ const Home = async ({ searchParams }: HomeProps) => {
     <ClientOnly>
       <Container>
         <div className="
-        pt-24
+        pt-28
         grid
         grid-cols-1
         sm:grid-cols-2
@@ -41,13 +41,11 @@ const Home = async ({ searchParams }: HomeProps) => {
 
           {listings.map((listing) => {
             return (
-              <div className="pt-4">
                 <ListingCard
                   key={listing.id}
                   currentUser={currentUser}
                   data={listing}
                 />
-              </div>
             )
           })}
         </div>
