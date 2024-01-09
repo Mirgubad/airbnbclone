@@ -33,7 +33,6 @@ const ListingReservation: React.FC<
         rounded-xl 
         border-[1px]
         border-neutral-200 
-        text-center
         overflow-hidden
       "
             >

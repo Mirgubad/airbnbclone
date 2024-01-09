@@ -11,6 +11,7 @@ import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import ListingReservation from "@/app/components/Listings/ListingReservation";
+import { Range } from "react-date-range";
 
 const initialDateRange = {
     startDate: new Date(),
@@ -20,8 +21,8 @@ const initialDateRange = {
 
 
 interface ListingClientProps {
-    reservations?: SafeReservations;
-    listing?: SafeListing & {
+    reservations?: SafeReservations[];
+    listing: SafeListing & {
         user: SafeUser
     };
     currentUser?: SafeUser | null
@@ -55,7 +56,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
     const [isLoading, setIsLoading] = useState(false);
     const [totalPrice, setTotalPrice] = useState(listing?.price)
-    const [dateRange, setDateRange] = useState(initialDateRange)
+    const [dateRange, setDateRange] = useState<Range>(initialDateRange)
 
     const onCreateReservation = useCallback(() => {
         if (!currentUser) {
@@ -117,7 +118,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         <div className="max-w-screen-lg mx-auto pt-4">
             <div className="flex flex-col gap-6">
                 <ListingHead
-                    title={listing?.title}
+                    title={listing.title}
                     imageSrc={listing?.imageSrc}
                     locationValue={listing?.locationValue}
                     id={listing?.id}
@@ -146,7 +147,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                     md:col-span-3
                     ">
                         <ListingReservation
-                            price={listing?.price}
+                            price={listing.price}
                             totalPrice={totalPrice}
                             onChangeDate={(value) => setDateRange(value)}
                             dateRange={dateRange}
