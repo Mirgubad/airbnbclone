@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
@@ -41,11 +42,11 @@ const Home = async ({ searchParams }: HomeProps) => {
 
           {listings.map((listing) => {
             return (
-                <ListingCard
-                  key={listing.id}
-                  currentUser={currentUser}
-                  data={listing}
-                />
+              <ListingCard
+                key={listing.id}
+                currentUser={currentUser}
+                data={listing}
+              />
             )
           })}
         </div>
